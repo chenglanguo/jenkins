@@ -10,7 +10,7 @@ pipeline {
     stage('checkout') {
       steps {
         script {
-          def scmVars = checkout([
+          scmVars = checkout([
             $class: "GitSCM",
             userRemoteConfigs: [[credentialsId: "personal-git", url: "https://github.com/chenglanguo/app.git"]]
           ])
