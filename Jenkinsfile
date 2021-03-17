@@ -1,4 +1,4 @@
-def scmVars
+
 pipeline {
   agent any
   options {
@@ -6,7 +6,7 @@ pipeline {
   }
 
   environment {
-              scmVars = checkout([
+          scmVars = checkout([
             $class: "GitSCM",
             userRemoteConfigs: [[credentialsId: "personal-git", url: "https://github.com/chenglanguo/app.git"]]
           ])
