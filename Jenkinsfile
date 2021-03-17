@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  options {
+    preserveStashes(buildCount: 5)
+  }
   stages {
     stage('build') {
       steps {
