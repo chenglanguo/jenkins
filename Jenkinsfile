@@ -17,7 +17,7 @@ pipeline {
     stage('Deploy-change') {
       steps {
         scripts {
-          def git_hash = $BUILD_NUMBER
+          def git_hash = "${currentBuild.number}"
         }
         echo git_hash
         sh "env"
