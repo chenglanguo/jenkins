@@ -19,7 +19,7 @@ pipeline {
         script {
           def git_hash = "${currentBuild.number}"
         }
-        echo git_hash
+        echo "${git_hash}"
         sh "env"
       }
     }
