@@ -3,10 +3,19 @@ pipeline {
   options {
     preserveStashes(buildCount: 5)
   }
+
+  
   stages {
     stage('checkout') {
       steps {
-        echo 'checkout...'
+        script {
+          def scmVars = checkout([
+            $class: "GitSCM",
+            userRemoteConfigs: [[credentialsId: "personal-git	", url: "https://github.com/chenglanguo/app.git"]]
+          ])
+          echo "${scmVars.GIT_COMMIT}"
+        }
+
       }
     }
     stage('build') {
@@ -17,7 +26,7 @@ pipeline {
     stage('Deploy') {
       steps {
         script {
-          git_hash = "${GIT_COMMIT}"
+          git_hash = "${scmVars.GIT_COMMIT}"
         }
         echo "${git_hash}"
         echo "hahaha"
