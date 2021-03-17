@@ -19,7 +19,7 @@ pipeline {
           //   $class: "GitSCM",
           //   userRemoteConfigs: [[credentialsId: "personal-git", url: "https://github.com/chenglanguo/app.git"]]
           // ])
-          echo "${scmVars.GIT_COMMIT}"
+          echo "${scmVars}.GIT_COMMIT"
         }
 
       }
@@ -32,7 +32,7 @@ pipeline {
     stage('Deploy') {
       steps {
         script {
-          git_hash = "${scmVars.GIT_COMMIT}"
+          git_hash = "${scmVars}.GIT_COMMIT"
         }
         echo "${git_hash}"
         echo "hahaha"
