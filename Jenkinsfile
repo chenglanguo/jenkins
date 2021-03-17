@@ -4,20 +4,20 @@ pipeline {
     preserveStashes(buildCount: 5)
   }
   stages {
+    stage('checkout') {
+      steps {
+        echo 'checkout...'
+      }
+    }
     stage('build') {
       steps {
-        echo 'Building...'
+        echo 'building...'
       }
     }
-    stage('Test') {
-      steps {
-        echo 'Testing...'
-      }
-    }
-    stage('Deploy-change-name') {
+    stage('Deploy') {
       steps {
         script {
-          git_hash = sh(script: "git log -n 1 --pretty=format:'%h'", returnStdout: true).trim()
+          git_hash = "${GIT_COMMIT}"
         }
         echo "${git_hash}"
         echo "hahaha"
