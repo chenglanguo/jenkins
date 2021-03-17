@@ -21,6 +21,7 @@ pipeline {
         }
         echo "${git_hash}"
         echo "hahaha"
+        echo "commit"
         // sh "env"
       }
     }
