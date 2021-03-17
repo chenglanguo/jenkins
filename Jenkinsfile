@@ -16,7 +16,10 @@ pipeline {
     }
     stage('Deploy-change') {
       steps {
-        echo 'Deploying...-hhh'
+        scripts {
+          def git_hash = $BUILD_NUMBER
+        }
+        echo ${git_hash}
       }
     }
   }
