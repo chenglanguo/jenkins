@@ -19,7 +19,7 @@ pipeline {
           //   $class: "GitSCM",
           //   userRemoteConfigs: [[credentialsId: "personal-git", url: "https://github.com/chenglanguo/app.git"]]
           // ])
-          echo "${scmVars}"
+          echo "${scmVars.GIT_COMMIT}"
         }
 
       }
