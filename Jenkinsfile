@@ -1,14 +1,17 @@
-def scmVars = checkout([
-            $class: "GitSCM",
-            userRemoteConfigs: [[credentialsId: "personal-git", url: "https://github.com/chenglanguo/app.git"]]
-          ])
+def scmVars
 pipeline {
   agent any
   options {
     preserveStashes(buildCount: 5)
   }
 
-  
+  environment {
+              scmVars = checkout([
+            $class: "GitSCM",
+            userRemoteConfigs: [[credentialsId: "personal-git", url: "https://github.com/chenglanguo/app.git"]]
+          ])
+          echo "${scmVars.GIT_COMMIT}"
+  }
   stages {
     stage('checkout') {
       steps {
