@@ -32,7 +32,7 @@ pipeline {
     stage('Deploy') {
       steps {
         script {
-          git_hash = "${scmVars}"
+          git_hash = "${scmVars.GIT_COMMIT}"
         }
         echo "${git_hash}"
         echo "hahaha"
