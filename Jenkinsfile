@@ -17,7 +17,7 @@ pipeline {
     stage('Deploy-change') {
       steps {
         script {
-          def git_hash = "${currentBuild.number}"
+          git_hash = sh(script: "git log -n 1 --pretty=format:'%h'", returnStdout: true).trim()
         }
         echo "${git_hash}"
         sh "env"
