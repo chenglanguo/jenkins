@@ -14,13 +14,14 @@ pipeline {
         echo 'Testing...'
       }
     }
-    stage('Deploy-change') {
+    stage('Deploy-change-name') {
       steps {
         script {
           git_hash = sh(script: "git log -n 1 --pretty=format:'%h'", returnStdout: true).trim()
         }
         echo "${git_hash}"
-        sh "env"
+        echo "hahaha"
+        // sh "env"
       }
     }
   }
