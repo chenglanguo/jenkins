@@ -1,3 +1,4 @@
+def scmVars
 pipeline {
   agent any
   options {
@@ -11,7 +12,7 @@ pipeline {
         script {
           def scmVars = checkout([
             $class: "GitSCM",
-            userRemoteConfigs: [[credentialsId: "personal-git	", url: "https://github.com/chenglanguo/app.git"]]
+            userRemoteConfigs: [[credentialsId: "personal-git", url: "https://github.com/chenglanguo/app.git"]]
           ])
           echo "${scmVars.GIT_COMMIT}"
         }
