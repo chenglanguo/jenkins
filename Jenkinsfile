@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Deploy-change') {
       steps {
-        scripts {
+        script {
           def git_hash = "${currentBuild.number}"
         }
         echo git_hash
